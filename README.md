@@ -1,0 +1,2 @@
+# LinuxFileHelper_BUPT_2022
+北邮22届LinuxShell编程小组作业-Linux文件助手,包括文件备份,文件传输等多种功能,北邮精神薪火相传
