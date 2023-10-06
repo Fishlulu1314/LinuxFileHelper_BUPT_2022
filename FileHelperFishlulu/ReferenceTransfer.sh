@@ -80,7 +80,7 @@ function mainUI() {
         fi
         ;;
     3)
-        dialog --colors --msgbox "Shell文件传输助手 \n\nBeta Version 2019.3.5\n\n\Z6开发人员：\n王衔飞  李思涵  胡嘉慧  丁玲" 20 50
+        dialog --colors --msgbox "Shell文件传输助手 \n\nBeta Version 2019.3.5\n\n\Z6" 20 50
         mainUI
         ;;
     4)

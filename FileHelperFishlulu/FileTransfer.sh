@@ -7,8 +7,8 @@ function is_absolute_path() {
     fi
 }
 function send() {
-    # read -rp "请输入您想发送的文件的绝对路径或相对路径" fileAddr
-    fileAddr="/root/scripts/debug.sh"
+    read -rp "请输入您想发送的文件的绝对路径" fileAddr
+    # fileAddr="/root/scripts/debug.sh"
     # echo "$fileAddr"
 
     if [ ! -f "$fileAddr" ]; then
@@ -32,8 +32,8 @@ function send() {
     # fileName=echo $(${fileAddr##*/})
     # dialog --inputbox "请输入您想使用的端口号" 20 50 2> temp
 
-    # read -rp "请输入您想使用的端口号" sendPort
-    sendPort="80"
+    read -rp "请输入您想使用的端口号" sendPort
+    # sendPort="80"
     if [ $? != 0 ]; then
         echo "未输入端口号"
         return 6
@@ -41,8 +41,8 @@ function send() {
     # sendPort=$(cat temp)
     # dialog --inputbox "请输入接收方的ip地址" 20 50 2> temp
 
-    # read -rp "请输入接收方的ip地址" recvIP
-    recvIP="192.168.181.100"
+    read -rp "请输入接收方的ip地址" recvIP
+    # recvIP="192.168.181.100"
     if [ $? != 0 ]; then
         echo "未输入接收方的ip地址"
         return 6
@@ -73,8 +73,8 @@ function send() {
 function recv() {
     # dialog --inputbox "请输入您想使用的端口号" 20 50 2> temp
 
-    # read -rp "请输入您想使用的端口号" recvPort
-    recvPort="80"
+    read -rp "请输入您想使用的端口号" recvPort
+    # recvPort="80"
     if [ $? != 0 ]; then
         echo "未输入接收用的端口号"
         return 6
@@ -82,8 +82,8 @@ function recv() {
     # recvPort=$(cat temp)
     # dialog --title "请选择接收路径" --fselect "${HOME}/" 8 50 2> temp
 
-    # read -rp "请选择接收路径(必须是一个目录)" recvAddr
-    recvAddr="/root/archive"
+    read -rp "请选择接收路径(必须是一个目录)" recvAddr
+    # recvAddr="/root/archive"
     #如果不是目录直接返回
     if [ ! -d "$recvAddr" ]; then
         echo "未填写接受路径或路径不是目录"
@@ -97,7 +97,7 @@ function recv() {
 
     #接受发来的第一条确认信息,即文件名
     nc -l "$recvPort" >temp
-    echo "接受名字"
+    # echo "接受名字"
     if [ $? != 0 ]; then
         # dialog --colors --msgbox "\Z1 接收错误！" 0 0
         echo "接收错误！"
@@ -143,11 +143,12 @@ function mainUI() {
         fi
         ;;
     3)
-        # dialog --colors --msgbox "Shell文件传输助手 \n\nBeta Version 2019.3.5\n\n\Z6开发人员：\n王衔飞  李思涵  胡嘉慧  丁玲" 20 50
-        echo -e "Shell文件传输助手 \n\nBeta Version 2019.3.5\n\n\Z6开发人员：\n王衔飞  李思涵  胡嘉慧  丁玲"
+        #测试版本号0.1.0
+        echo -e "\n\n*********Shell文件传输助手********* \n\nV0.1.0 2023.10.5\n\n开发人员：\n禄禄鱼  艾俊波  涂珉铢  孙明睿  文思捷\n\n"
         mainUI
         ;;
     4)
+    echo "感谢使用~"
         return
         ;;
     *)
@@ -157,12 +158,12 @@ function mainUI() {
     esac
 }
 #在脚本文件目录下创建temp文件
-
 script_dir=$(dirname "$(realpath "$0")")
 cd "$script_dir" || exit
-touch temp
-touch filetemp
+
 mainUI
 # clear
+
+#结束后清除temp文件
 rm -f temp
 rm -f filetemp
