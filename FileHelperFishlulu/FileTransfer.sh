@@ -1,11 +1,11 @@
 #!/bin/bash
-function is_absolute_path() {
-    if [[ $1 =~ ^[/\\] ]]; then
-        return 0
-    else
-        return 1
-    fi
-}
+# function is_absolute_path() {
+#     if [[ $1 =~ ^[/\\] ]]; then
+#         return 0
+#     else
+#         return 1
+#     fi
+# }
 function send() {
     read -rp "请输入您想发送的文件的绝对路径" fileAddr
     # fileAddr="/root/scripts/debug.sh"
@@ -126,7 +126,7 @@ function recv() {
 function mainUI() {
     # dialog --cancel-label 退出 --title Shell文件传输助手 --menu " \n " 20 50 8 1 "发送文件" 2 "接收文件" 3 "关于" 4 "退出" 2> temp
     # a1=$(cat temp)
-    echo -e "==========文件传输助手==========\n1.发送文件\n2.接收文件\n3.关于\n4.退出\n请输入您的选择："
+    echo -e "==========文件传输助手==========\n1.发送文件\n2.接收文件\n3.退出\n请输入您的选择："
     read -r option
     # option="2"
     case $option in
@@ -142,13 +142,12 @@ function mainUI() {
             mainUI
         fi
         ;;
+    # 3)
+    #     #测试版本号0.1.0
+
+    #     mainUI
+    #     ;;
     3)
-        #测试版本号0.1.0
-        echo -e "\n\n*********Shell文件传输助手********* \n\nV0.1.0 2023.10.5\n\n开发人员：\n禄禄鱼  艾俊波  涂珉铢  孙明睿  文思捷\n\n"
-        mainUI
-        ;;
-    4)
-    echo "感谢使用~"
         return
         ;;
     *)
@@ -157,9 +156,6 @@ function mainUI() {
         ;;
     esac
 }
-#在脚本文件目录下创建temp文件
-script_dir=$(dirname "$(realpath "$0")")
-cd "$script_dir" || exit
 
 mainUI
 # clear
