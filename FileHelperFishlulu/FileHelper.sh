@@ -1,5 +1,5 @@
 #!/bin/bash
-
+version="0.1.1"
 #文件助手主界面,通过该界面来调用其他的脚本,目前打算支持实现文件传输和备份和功能
 #脚本可直接通过命令 fhelper 来调用
 
@@ -16,7 +16,7 @@ function mainUI() {
         fi
         ;;
     2)
-        
+
         source ./components/FileBackup.sh
         if [ $? != 0 ]; then
             ehco "进入失败"
@@ -24,13 +24,11 @@ function mainUI() {
         fi
         ;;
     3)
-        #测试版本号0.1.0
-        version="0.1.0"
-        echo -e "\n\n*********Shell文件助手********* \n\nV${version} 2023.10.5\n\n开发人员：\n禄禄鱼  艾俊波  涂珉铢  孙明睿  文思捷\n\n"
+        echo -e "\n\n*********Shell文件助手********* \n\nV${version} 2023.10.7\n\n开发人员：\n禄禄鱼  艾俊波  涂珉铢  孙明睿  文思捷\n\n"
         mainUI
         ;;
     4)
-    echo "感谢使用~"
+        echo "感谢使用~"
         return
         ;;
     *)
