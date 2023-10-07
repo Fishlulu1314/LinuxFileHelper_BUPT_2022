@@ -9,14 +9,17 @@ function mainUI() {
     read -r option
     case $option in
     1)
-        source ./FileTransfer.sh
+        source ./components/FileTransfer.sh
         if [ $? != 0 ]; then
+            ehco "进入失败"
             mainUI
         fi
         ;;
     2)
-        source ./FileBackup.sh
+        
+        source ./components/FileBackup.sh
         if [ $? != 0 ]; then
+            ehco "进入失败"
             mainUI
         fi
         ;;
